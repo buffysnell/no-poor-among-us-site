@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>No Poor Among Us</title>
+<meta name="description" content="A small, personally vetted directory of churches and principled organizations doing real hand-up work. Giving with confidence.">
+<meta property="og:title" content="No Poor Among Us">
+<meta property="og:description" content="A small, personally vetted directory of churches and principled organizations doing real hand-up work. Giving with confidence.">
+<meta property="og:image" content="mascot.png">
+<link rel="icon" href="mascot.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3EEE4;
+  --surface:#FBF8F2;
+  --fg:#3A2A33;
+  --muted-fg:#6E5E65;
+  --accent:#6B3654;
+  --accent-2:#B5812E;
+  --sage:#5C6B45;
+  --border:#DDD0BC;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#241A20;
+    --surface:#2E222A;
+    --fg:#F3EEE4;
+    --muted-fg:#C7B8A3;
+    --accent:#E2A6C6;
+    --accent-2:#E6BA6B;
+    --sage:#9CB07E;
+    --border:#4A3B42;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#241A20;
+  --surface:#2E222A;
+  --fg:#F3EEE4;
+  --muted-fg:#C7B8A3;
+  --accent:#E2A6C6;
+  --accent-2:#E6BA6B;
+  --sage:#9CB07E;
+  --border:#4A3B42;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--fg);
+  font-family:'Karla',system-ui,-apple-system,sans-serif;
+  font-size:15px;
+  padding-inline:20px;
+  padding-block:0;
+  line-height:1.55;
+}
+h1,h2,h3{
+  font-family:'Fraunces',Georgia,serif;
+  font-weight:600;
+  text-wrap:balance;
+  margin:0;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+
+.wrap{max-width:1040px;margin-inline:auto}
+
+.eyebrow{
+  font-family:'Karla',system-ui,sans-serif;
+  font-weight:700;
+  font-size:.72rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--accent-2);
+}
+
+header.site{
+  padding-block:22px 10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.wordmark{
+  font-family:'Fraunces',Georgia,serif;
+  font-weight:600;
+  font-size:1.15rem;
+  letter-spacing:.01em;
+}
+nav.site{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+}
+nav.site a{
+  font-size:.85rem;
+  font-weight:700;
+  color:var(--muted-fg);
+  text-decoration:none;
+  white-space:nowrap;
+}
+nav.site a:hover{color:var(--accent)}
+
+.hero{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:40px;
+  align-items:center;
+  padding-block:28px 56px;
+}
+@media (max-width:760px){
+  header.site{justify-content:center;text-align:center}
+  nav.site{justify-content:center}
+  .hero{grid-template-columns:1fr;padding-block:16px 40px;text-align:center}
+  .hero .art{order:-1;max-width:220px;margin-inline:auto}
+  .hero p.lede{margin-inline:auto}
+  .section-head{margin-inline:auto;text-align:center}
+}
+.hero h1{font-size:clamp(2.1rem,5vw,3rem);margin-top:8px;color:var(--accent)}
+.hero .tagline{
+  font-family:'Fraunces',Georgia,serif;
+  font-style:italic;
+  font-size:1.15rem;
+  color:var(--sage);
+  margin-top:6px;
+}
+.hero p.lede{
+  margin-top:18px;
+  max-width:52ch;
+  color:var(--muted-fg);
+  font-size:1.02rem;
+}
+.hero .art{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px;
+}
+.hero .art img{border-radius:10px}
+
+#principle .section-head{margin-inline:auto;text-align:center;max-width:58ch}
+#principle .tagline{
+  font-family:'Fraunces',Georgia,serif;
+  font-style:italic;
+  color:var(--sage);
+  font-size:1.1rem;
+  margin-top:8px;
+}
+
+#updates .section-head{margin-inline:auto;text-align:center;max-width:52ch}
+#updates .section-head p{margin-bottom:6px}
+
+.section-head{
+  padding-block:8px 20px;
+  max-width:62ch;
+  margin-inline:auto;
+  text-align:center;
+}
+.section-head h2{font-size:clamp(1.5rem,3vw,1.9rem);margin-top:6px}
+.section-head p{color:var(--muted-fg);margin-top:10px}
+
+section{padding-block:36px}
+section + section{border-top:1px solid var(--border)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,340px));
+  justify-content:center;
+  gap:18px;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:0;
+}
+.card.empty,.card.more{
+  border-style:dashed;
+  justify-content:center;
+  text-align:center;
+  color:var(--muted-fg);
+}
+.badge{
+  align-self:flex-start;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  background:var(--accent);
+  color:var(--bg);
+  padding:3px 10px;
+  border-radius:999px;
+}
+.card.maker .badge{background:var(--sage)}
+.card.job .badge{background:var(--accent-2)}
+.card.resource .badge{background:var(--sage)}
+.card .disclosure strong{color:var(--fg)}
+.card h3{font-size:1.25rem;color:var(--fg)}
+.card .desc{color:var(--muted-fg);font-size:.95rem}
+.card .vetting{
+  font-size:.85rem;
+  color:var(--sage);
+  display:flex;
+  gap:6px;
+  align-items:baseline;
+}
+.card .disclosure{
+  font-size:.78rem;
+  color:var(--muted-fg);
+  border-top:1px solid var(--border);
+  padding-top:10px;
+  margin-top:auto;
+}
+.card .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.pill-link{
+  font-size:.85rem;
+  font-weight:700;
+  text-decoration:none;
+  color:var(--accent);
+  border:1px solid var(--accent);
+  padding:7px 14px;
+  border-radius:999px;
+}
+.pill-link:hover{background:var(--accent);color:var(--bg)}
+.pill-static{
+  font-size:.8rem;
+  font-weight:700;
+  color:var(--muted-fg);
+  background:var(--border);
+  padding:7px 14px;
+  border-radius:999px;
+}
+
+footer{
+  padding-block:44px 48px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+footer h2{font-size:1.4rem;color:var(--accent)}
+footer p{color:var(--muted-fg);max-width:48ch}
+.fb-link,.cta-link{
+  display:inline-block;
+  font-weight:700;
+  text-decoration:none;
+  color:var(--bg);
+  background:var(--accent);
+  padding:11px 22px;
+  border-radius:999px;
+  font-size:.95rem;
+}
+.fb-link:hover,.cta-link:hover{opacity:.9}
+.cta-link.gold{background:var(--accent-2)}
+.brandmark{
+  font-family:'Fraunces',Georgia,serif;
+  font-style:italic;
+  color:var(--muted-fg);
+  font-size:.85rem;
+  margin-top:6px;
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site">
+    <div class="wordmark">No Poor Among Us</div>
+    <nav class="site">
+      <a href="#partners">Vetted Partners</a>
+      <a href="#marketplace">Fruits of Their Labor</a>
+      <a href="#jobs">Room to Grow</a>
+      <a href="#seeds">Seeds to Plant</a>
+      <a href="#updates">Stay in the Loop</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Giving with Confidence</div>
+      <h1>No Poor Among Us</h1>
+      <div class="tagline">Rooted in people. Growing stronger together.</div>
+      <p class="lede">A small, personally vetted directory of churches and principled organizations doing real hand-up work — and a community that supports small businesses and entrepreneurship. We're helping people help themselves. Every listing here has been vetted directly, person to person. Your full gift, purchase, or support goes straight to them; nothing passes through us. (Any affiliate links are always clearly labeled.)</p>
+    </div>
+    <div class="art">
+      <img src="mascot.png" alt="Illustration of a pear tree with a smiling coin character nestled in its roots">
+    </div>
+  </section>
+
+  <section id="principle">
+    <div class="section-head">
+      <div class="eyebrow">The Surplus Principle</div>
+      <h2>Give from the surplus, not the sacrifice</h2>
+      <div class="tagline">Give Without the Grip — no set amount, no guilt, no lock-in.</div>
+      <p>No Poor Among Us is built on a central idea: giving should come from your surplus (what's left after your needs and wants are met) — not guilt, not pressure, not a fixed percentage of income. One cannot serve others from an empty tray. Surplus, not sacrifice, is where abundant giving starts.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head">
+      <div class="eyebrow">Why I Started This</div>
+      <h2>A system I could still trust</h2>
+      <p>A while back, I left my church on principle — not because I stopped believing, but because I couldn't keep giving to a system I no longer trusted. Something I've struggled with since is finding a new place for my charitable giving, without enabling people, or giving to organizations that misuse the funds.</p>
+      <p>For the past year and a half, I've also been organizing support for survivors of abuse through groups like Warrior Women and Round Table, walking alongside mothers fighting to protect their kids, and standing up against corruption. No Poor Among Us was born from this work and a desire to help an increasing number of people in need.</p>
+      <p>Right now, I help churches and principled organizations raise REAL money for REAL work, personally vetting every organization — ensuring accountability, financial transparency, and outcomes they can show. Long-term, I want to build a place where reputable, vetted organizations, donors, and the people who need help can all meet in one trusted community. This directory is where that journey begins.</p>
+      <p>If you lead a church or an organization doing hand-up work — not hand-out — and could use help raising support, message me. And if you're simply looking for a place to give with confidence, I'm glad you found us.♥</p>
+    </div>
+  </section>
+
+  <section id="partners">
+    <div class="section-head">
+      <div class="eyebrow">Vetted Partners</div>
+      <h2>Organizations worth your trust</h2>
+      <p>Each organization here has been personally vetted — for real work, real transparency, and real accountability. We never take a cut of what's given.</p>
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <span class="badge">Founding Partner</span>
+        <h3>SOAAR Global</h3>
+        <p class="desc">Support for people rebuilding after organized abuse and addiction — scholarships, counseling access, and practical help getting back on their feet.</p>
+        <p class="vetting">✓ Personally vetted — principled leadership, direct about where help is needed most</p>
+        <div class="cta-row">
+          <span class="pill-static">Campaign launching soon</span>
+          <a class="pill-link" href="https://www.soaarglobal.com/" target="_blank" rel="noopener">Learn more</a>
+        </div>
+        <p class="disclosure">SOAAR operates as a private membership association. Gifts are not tax-deductible.</p>
+      </div>
+
+      <div class="card more">
+        <p><strong>More partners coming soon.</strong><br>New organizations are added here as their campaigns launch.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="marketplace">
+    <div class="section-head">
+      <div class="eyebrow">Fruits of Their Labor</div>
+      <h2>Shop what they've built</h2>
+      <p>A marketplace for the small businesses and handmade goods of people rebuilding their lives, and the people walking alongside them — no labels required, just good work worth supporting.</p>
+    </div>
+    <div class="grid">
+      <div class="card empty maker">
+        <p><strong>This space is just getting started.</strong><br>Know someone whose business belongs here? We'd love an introduction.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="jobs">
+    <div class="section-head">
+      <div class="eyebrow">Room to Grow</div>
+      <h2>Businesses with room to grow</h2>
+      <p>Local businesses with an opening, looking for good people to bring on. And if you're the one looking for work, we keep that between us — message us and we'll make the introduction personally, no public listing needed.</p>
+    </div>
+    <div class="grid">
+      <div class="card empty job">
+        <p><strong>No openings posted yet.</strong><br>Own a business that's hiring? Let us know and we'll list it here.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="seeds">
+    <div class="section-head">
+      <div class="eyebrow">Seeds to Plant</div>
+      <h2>Tools to build your own income</h2>
+      <p>Programs and resources I've used myself to build something new. A hand up sometimes looks like a new skill. Some links here are affiliate links, and I'll always tell you when.</p>
+    </div>
+    <div class="grid">
+
+      <div class="card resource">
+        <span class="badge">Personally Used</span>
+        <h3>AI Income Games</h3>
+        <p class="desc">A free 5-day live challenge led by Joseph Aaron, a pastor and 20-year marketing veteran. In plain English, he walks through how everyday people, with or without a tech background, are using AI tools to create extra income. New classes start regularly.</p>
+        <div class="cta-row">
+          <a class="pill-link" href="https://aiincomegames.com/?via=buffy" target="_blank" rel="noopener">Join the free challenge</a>
+        </div>
+        <p class="disclosure"><strong>Affiliate link:</strong> I get a referral credit if you sign up through this link. The challenge is free either way.</p>
+      </div>
+
+      <div class="card more">
+        <p><strong>More resources coming.</strong><br>I only add what I've used or vetted myself.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="updates">
+    <div class="section-head">
+      <div class="eyebrow">Stay in the Loop</div>
+      <h2>Get word when something new lands</h2>
+      <p>New partners, new listings, and campaign launches — straight to your inbox, nothing else.</p>
+      <a class="cta-link gold" href="https://docs.google.com/forms/d/e/1FAIpQLScWhupfa-pI6F1d1v2EJaHb_nXgZejjhLOAHr1ri_28Z1kWoQ/viewform" target="_blank" rel="noopener">Join the list</a>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Know who belongs here?</h2>
+    <p>An organization doing real hand-up work, a small business worth backing, or a business that's hiring — we'd love to hear about it.</p>
+    <a class="fb-link" href="https://www.facebook.com/share/1WYn6gA3bV/" target="_blank" rel="noopener">Message us on Facebook</a>
+    <div class="brandmark">No Poor Among Us · © 2026</div>
+  </footer>
+
+</div>
+</body>
+</html>
